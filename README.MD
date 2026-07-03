@@ -1,81 +1,207 @@
-<div align="center">
+# 🏎️ Formula 1 API - Fastify
 
-  <img src="./.github/assets/blue-saiyan-bg.png" alt="Logo" height="200">
-  <h1 align="center"><strong>NODE BOILERPLATE - BLUE EDITION</strong></h1>
-  <p align="center">
-	  Don't start a new Node project from zero!<br> Use this simple <b>Nodejs</b> boilerplate with pre-configured <b>Typescript</b> in a modern way.
-  </p>
+Uma API minimalista desenvolvida com **Fastify** e **TypeScript** para disponibilizar informações sobre equipes e pilotos da Fórula 1.
 
-</div>
+## 📋 Descrição
 
-<br />
+Este projeto simula uma pequena API REST contendo dados das equipes e pilotos da Fórula 1.
 
-  <!-- Badges -->
-<div align="center">
-  
-  [![TypeScript version][ts-badge]][typescript-5-4]
-  [![Node.js version][nodejs-badge]][nodejs]
+A aplicação foi criada com foco em:
 
-</div>
+* Estrutura simples e organizada
+* Performance utilizando Fastify
+* Conceitos básicos de APIs REST
+* Rotas dinâmicas
+* Manipulação de JSON
+* Uso de TypeScript no backend
 
-# 🚀 Technologies
+---
 
-This code source was developed with the following items:
+# 🚀 Tecnologias Utilizadas
 
-### 📦 Dependencies
+* Node.js
+* TypeScript
+* Fastify
 
-- [typescript][typescript-npm] - Superset for application scale JavaScript development
-- [tsx][tsx-npm] - TypeScript Execute (tsx): Enable Node.js to run TypeScript
-- [tsup][tsup-npm] - Bundle your TypeScript library with no config, powered by esbuild
-- [@types/node][@types/node-npm] - type definitions for node
+---
 
-### 📄 Files
-
-- `.gitignore` - Ignore folders like node_modules
-- `.env` - Enviroment variables
-- `tsconfig.json` - Typescript configure Options
-
-### ⚡ Scripts
-
-- `npm run dist`: Compiles TypeScript files to JavaScript in the dist directory.
-- `npm run start:dev`: Runs the server in development mode with environment variables loaded from the .env file.
-- `npm run start:watch`: Runs the server in development mode with support for automatic reload on file changes.
-- `npm run start:dist`: Compiles the project and runs the compiled version from the dist directory.
-
-# 👨‍💻 How To Use
-
-click in **[Use this template]** OR
-
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v20+](https://nodejs.org/en/) + [NPM v10+](https://nodejs.org/en/) installed on your computer. From your command line:
+# 📁 Estrutura do Projeto
 
 ```bash
-# Clone this repository
-$ git clone https://github.com/felipeAguiarCode/node-blue-boilerplate
-
-# Go into the repository
-$ cd node-blue-boilerplate
-
-# Install dependencies
-$ npm install
+📦 formula1-api
+ ┣ 📜 server.ts
+ ┣ 📜 package.json
+ ┣ 📜 tsconfig.json
+ ┗ 📜 README.md
 ```
 
-## Author
+---
 
-| [<img src="https://avatars3.githubusercontent.com/u/37452836?s=96&v=4"><br><sub>Felipe Aguiar</sub>](https://github.com/felipeAguiarCode) |
-| :---------------------------------------------------------------------------------------------------------------------------------------: |
-|                                            [Linkedin](www.linkedin.com/in/felipe-aguiar-exe/)                                             |
+# ⚙️ Instalação
 
-# Credits
+Clone o repositório:
 
-icons by [Pino Lamanna][dribble-icon]
+```bash
+git clone https://github.com/seu-usuario/formula1-api.git
+```
 
-[typescript]: https://www.typescriptlang.org/
-[typescript-5-4]: https://www.typescriptlang.org/
-[ts-badge]: https://img.shields.io/badge/TypeScript-5.4-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2020.00-blue.svg
-[nodejs]: https://nodejs.org/
-[dribble-icon]: https://dribbble.com/Schakalwal
-[typescript-npm]: https://www.npmjs.com/package/typescript
-[tsx-npm]: https://www.npmjs.com/package/tsx
-[tsup-npm]: https://www.npmjs.com/package/tsup
-[@types/node-npm]: https://www.npmjs.com/package/@types/node
+Acesse a pasta do projeto:
+
+```bash
+cd formula1-api
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+# ▶️ Executando o Projeto
+
+Modo desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Ou execute diretamente:
+
+```bash
+npx tsx server.ts
+```
+
+Servidor iniciado em:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+# 📌 Endpoints
+
+## 🔹 Listar equipes
+
+### Request
+
+```http
+GET /teams
+```
+
+### Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Mercedes",
+    "base": "Brackley"
+  }
+]
+```
+
+---
+
+## 🔹 Listar pilotos
+
+### Request
+
+```http
+GET /drivers
+```
+
+### Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Kimi Antonelli",
+    "team": "Mercedes"
+  }
+]
+```
+
+---
+
+## 🔹 Buscar piloto por ID
+
+### Request
+
+```http
+GET /drivers/:id
+```
+
+### Exemplo
+
+```http
+GET /drivers/3
+```
+
+### Response
+
+```json
+{
+  "id": 3,
+  "name": "Max Verstappen",
+  "team": "Red Bull Racing"
+}
+```
+
+---
+
+# ❌ Tratamento de Erros
+
+Caso o piloto não exista:
+
+```json
+{
+  "error": "Driver not found"
+}
+```
+
+Status retornado:
+
+```http
+404 Not Found
+```
+
+---
+
+# 🎯 Objetivos do Projeto
+
+Este projeto foi desenvolvido para praticar:
+
+* Criação de APIs REST
+* Rotas com parâmetros
+* Fastify
+* TypeScript
+* Organização backend
+* Retorno de dados em JSON
+
+---
+
+# 🔮 Melhorias Futuras
+
+* Integração com banco de dados
+* CRUD completo
+* Separação em controllers e routes
+* Docker
+* Validação com Zod
+* Testes automatizados
+* Swagger Documentation
+
+---
+
+# 📚 Aprendizados
+
+Durante o desenvolvimento deste projeto foram aplicados conceitos importantes de backend moderno utilizando Fastify e TypeScript, reforçando fundamentos essenciais para APIs performáticas e escaláveis.
+
+---
+
+# 👨‍💻 Autor
+
+Desenvolvido por Gabriel Manfio 🚀
