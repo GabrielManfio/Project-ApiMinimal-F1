@@ -2,7 +2,7 @@ import fastify from 'fastify';
 import cors from "@fastify/cors";
 
 const server = fastify({ logger: true });
-server.register(cors,{origin: "www.dio.me"});
+server.register(cors,{origin: "*"});
 
 const teams = [
   { id: 1, name: "Mercedes", base: "Brackley" },
